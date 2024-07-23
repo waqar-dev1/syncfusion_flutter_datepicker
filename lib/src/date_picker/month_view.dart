@@ -277,7 +277,7 @@ class _MonthViewState extends State<MonthView> {
               widget.isHijri;
       for (int j = 0; j < viewCount; j++) {
         final int currentViewIndex =
-            widget.isRtl ? DateRangePickerHelper.getRtlIndex(viewCount, j) : j;
+        widget.isRtl ? DateRangePickerHelper.getRtlIndex(viewCount, j) : j;
         final int viewStartIndex = j * datesCount;
         final int currentMonth = widget
             .visibleDates[(viewStartIndex + (datesCount / 2)).truncate()]
@@ -286,27 +286,27 @@ class _MonthViewState extends State<MonthView> {
         double viewStartPosition = isVerticalMultiView
             ? weekNumberPanelWidth
             : (currentViewIndex * width) +
-                (currentViewIndex * widget.multiViewSpacing) +
-                (weekNumberPanelWidth * (viewStartIndex + 1));
+            (currentViewIndex * widget.multiViewSpacing) +
+            (weekNumberPanelWidth * (viewStartIndex + 1));
         if (widget.isRtl) {
           viewStartPosition = isVerticalMultiView
               ? 0
               : (currentViewIndex * width) +
-                  (currentViewIndex * webUIPadding) +
-                  (weekNumberPanelWidth * currentViewIndex);
+              (currentViewIndex * webUIPadding) +
+              (weekNumberPanelWidth * currentViewIndex);
         }
         final double viewEndPosition = viewStartPosition + width;
         double xPosition = viewStartPosition;
         double yPosition = isHorizontalMultiView
             ? 0
             : (currentViewIndex * height) +
-                (currentViewIndex * widget.multiViewSpacing);
+            (currentViewIndex * widget.multiViewSpacing);
         for (int i = 0; i < datesCount; i++) {
           int currentIndex = i;
           if (widget.isRtl) {
             final int rowIndex = i ~/ DateTime.daysPerWeek;
             currentIndex = DateRangePickerHelper.getRtlIndex(
-                    DateTime.daysPerWeek, i % DateTime.daysPerWeek) +
+                DateTime.daysPerWeek, i % DateTime.daysPerWeek) +
                 (rowIndex * DateTime.daysPerWeek);
           }
 
@@ -333,15 +333,15 @@ class _MonthViewState extends State<MonthView> {
               context,
               widget.isHijri
                   ? HijriDateRangePickerCellDetails(
-                      date: date,
-                      visibleDates: widget.visibleDates.cast<HijriDateTime>(),
-                      bounds: Rect.fromLTWH(
-                          xPosition, yPosition, cellWidth, cellHeight))
+                  date: date,
+                  visibleDates: widget.visibleDates.cast<HijriDateTime>(),
+                  bounds: Rect.fromLTWH(
+                      xPosition, yPosition, cellWidth, cellHeight))
                   : DateRangePickerCellDetails(
-                      date: date,
-                      visibleDates: widget.visibleDates.cast<DateTime>(),
-                      bounds: Rect.fromLTWH(xPosition, yPosition, cellWidth,
-                          cellHeight))) as Widget;
+                  date: date,
+                  visibleDates: widget.visibleDates.cast<DateTime>(),
+                  bounds: Rect.fromLTWH(xPosition, yPosition, cellWidth,
+                      cellHeight))) as Widget;
           _children.add(child);
           xPosition += cellWidth;
         }
@@ -2320,10 +2320,10 @@ abstract class _IMonthView extends RenderBox
 
   @override
   void assembleSemanticsNode(
-    SemanticsNode node,
-    SemanticsConfiguration config,
-    Iterable<SemanticsNode> children,
-  ) {
+      SemanticsNode node,
+      SemanticsConfiguration config,
+      Iterable<SemanticsNode> children,
+      ) {
     _cacheNodes ??= <SemanticsNode>[];
     final List<CustomPainterSemantics> semantics = _getSemanticsBuilder(size);
     final List<SemanticsNode> semanticsNodes = <SemanticsNode>[];
@@ -2376,7 +2376,7 @@ abstract class _IMonthView extends RenderBox
 
   List<CustomPainterSemantics> _getSemanticsBuilder(Size size) {
     final List<CustomPainterSemantics> semanticsBuilder =
-        <CustomPainterSemantics>[];
+    <CustomPainterSemantics>[];
     double left, top;
     Map<String, double> leftAndTopValue;
     double webUIPadding = 0;
@@ -2404,29 +2404,29 @@ abstract class _IMonthView extends RenderBox
     final int datesCount = _visibleDates.length ~/ viewCount;
     for (int j = 0; j < viewCount; j++) {
       final int currentViewIndex =
-          _isRtl ? DateRangePickerHelper.getRtlIndex(viewCount, j) : j;
+      _isRtl ? DateRangePickerHelper.getRtlIndex(viewCount, j) : j;
       left = _isRtl
           ? width - cellWidth - weekNumberPanelWidth
           : weekNumberPanelWidth;
       top = 0;
       final dynamic middleDate =
-          _visibleDates[(j * datesCount) + (datesCount ~/ 2)];
+      _visibleDates[(j * datesCount) + (datesCount ~/ 2)];
       double viewXStartPosition = isVerticalMultiView
           ? weekNumberPanelWidth
           : (currentViewIndex * width) +
-              (currentViewIndex * webUIPadding) +
-              (weekNumberPanelWidth * (currentViewIndex + 1));
+          (currentViewIndex * webUIPadding) +
+          (weekNumberPanelWidth * (currentViewIndex + 1));
       if (isRtl) {
         viewXStartPosition = isVerticalMultiView
             ? 0
             : (currentViewIndex * width) +
-                (currentViewIndex * webUIPadding) +
-                (weekNumberPanelWidth * currentViewIndex);
+            (currentViewIndex * webUIPadding) +
+            (weekNumberPanelWidth * currentViewIndex);
       }
       final double viewYStartPosition = isHorizontalMultiView
           ? 0
           : (currentViewIndex * height) +
-              (currentViewIndex * _multiViewSpacing);
+          (currentViewIndex * _multiViewSpacing);
 
       for (int i = 0; i < datesCount; i++) {
         final dynamic currentDate = _visibleDates[(j * datesCount) + i];
@@ -2441,7 +2441,7 @@ abstract class _IMonthView extends RenderBox
                 : xPosition;
           }
           final int weekNumber =
-              DateRangePickerHelper.getWeekNumberOfYear(currentDate, isHijri);
+          DateRangePickerHelper.getWeekNumberOfYear(currentDate, isHijri);
           semanticsBuilder.add(CustomPainterSemantics(
               rect: Rect.fromLTWH(
                   xPosition, top, weekNumberPanelWidth, cellHeight),
@@ -2474,7 +2474,7 @@ abstract class _IMonthView extends RenderBox
           top = leftAndTopValue['top']!;
           continue;
         } else if (!DateRangePickerHelper.isEnabledDate(
-                _minDate, _maxDate, _enablePastDates, currentDate, _isHijri) ||
+            _minDate, _maxDate, _enablePastDates, currentDate, _isHijri) ||
             DateRangePickerHelper.isDateWithInVisibleDates(
                 visibleDates, disableDatesCollection, currentDate)) {
           semanticsBuilder.add(CustomPainterSemantics(
@@ -2513,7 +2513,7 @@ abstract class _IMonthView extends RenderBox
   String _getSemanticMonthLabel(dynamic date) {
     if (_isHijri) {
       return '${DateFormat('EEE').format(date.toDateTime())},${date.day}'
-          // ignore: lines_longer_than_80_chars
+      // ignore: lines_longer_than_80_chars
           ' ${DateRangePickerHelper.getHijriMonthText(date, localizations, 'MMMM')} ${date.year}';
     } else {
       return DateFormat('EEE, dd MMMM yyyy').format(date);
@@ -2560,41 +2560,41 @@ class _MonthViewSingleSelectionRenderObject extends _IMonthView {
       double weekNumberPanelWidth,
       List<dynamic>? disableDatesCollection)
       : super(
-            visibleDates,
-            rowCount,
-            cellStyle,
-            selectionTextStyle,
-            rangeTextStyle,
-            selectionColor,
-            startRangeSelectionColor,
-            endRangeSelectionColor,
-            rangeSelectionColor,
-            datePickerTheme,
-            isRtl,
-            todayHighlightColor,
-            minDate,
-            maxDate,
-            enablePastDates,
-            showLeadingAndTailingDates,
-            blackoutDates,
-            specialDates,
-            weekendDays,
-            selectionShape,
-            selectionRadius,
-            mouseHoverPosition,
-            enableMultiView,
-            multiViewSpacing,
-            selectionNotifier,
-            textScaleFactor,
-            height,
-            width,
-            isHijri,
-            navigationDirection,
-            localizations,
-            isMobilePlatform,
-            weekNumberStyle,
-            weekNumberPanelWidth,
-            disableDatesCollection);
+      visibleDates,
+      rowCount,
+      cellStyle,
+      selectionTextStyle,
+      rangeTextStyle,
+      selectionColor,
+      startRangeSelectionColor,
+      endRangeSelectionColor,
+      rangeSelectionColor,
+      datePickerTheme,
+      isRtl,
+      todayHighlightColor,
+      minDate,
+      maxDate,
+      enablePastDates,
+      showLeadingAndTailingDates,
+      blackoutDates,
+      specialDates,
+      weekendDays,
+      selectionShape,
+      selectionRadius,
+      mouseHoverPosition,
+      enableMultiView,
+      multiViewSpacing,
+      selectionNotifier,
+      textScaleFactor,
+      height,
+      width,
+      isHijri,
+      navigationDirection,
+      localizations,
+      isMobilePlatform,
+      weekNumberStyle,
+      weekNumberPanelWidth,
+      disableDatesCollection);
 
   dynamic _selectedDate;
 
@@ -2741,41 +2741,41 @@ class _MonthViewMultiSelectionRenderObject extends _IMonthView {
       double weekNumberPanelWidth,
       List<dynamic>? disableDatesCollection)
       : super(
-            visibleDates,
-            rowCount,
-            cellStyle,
-            selectionTextStyle,
-            rangeTextStyle,
-            selectionColor,
-            startRangeSelectionColor,
-            endRangeSelectionColor,
-            rangeSelectionColor,
-            datePickerTheme,
-            isRtl,
-            todayHighlightColor,
-            minDate,
-            maxDate,
-            enablePastDates,
-            showLeadingAndTailingDates,
-            blackoutDates,
-            specialDates,
-            weekendDays,
-            selectionShape,
-            selectionRadius,
-            mouseHoverPosition,
-            enableMultiView,
-            multiViewSpacing,
-            selectionNotifier,
-            textScaleFactor,
-            height,
-            width,
-            isHijri,
-            navigationDirection,
-            localizations,
-            isMobilePlatform,
-            weekNumberStyle,
-            weekNumberPanelWidth,
-            disableDatesCollection);
+      visibleDates,
+      rowCount,
+      cellStyle,
+      selectionTextStyle,
+      rangeTextStyle,
+      selectionColor,
+      startRangeSelectionColor,
+      endRangeSelectionColor,
+      rangeSelectionColor,
+      datePickerTheme,
+      isRtl,
+      todayHighlightColor,
+      minDate,
+      maxDate,
+      enablePastDates,
+      showLeadingAndTailingDates,
+      blackoutDates,
+      specialDates,
+      weekendDays,
+      selectionShape,
+      selectionRadius,
+      mouseHoverPosition,
+      enableMultiView,
+      multiViewSpacing,
+      selectionNotifier,
+      textScaleFactor,
+      height,
+      width,
+      isHijri,
+      navigationDirection,
+      localizations,
+      isMobilePlatform,
+      weekNumberStyle,
+      weekNumberPanelWidth,
+      disableDatesCollection);
 
   List<dynamic>? _selectedDates;
 
@@ -2927,41 +2927,41 @@ class _MonthViewRangeSelectionRenderObject extends _IMonthView {
       double weekNumberPanelWidth,
       List<dynamic>? disableDatesCollection)
       : super(
-            visibleDates,
-            rowCount,
-            cellStyle,
-            selectionTextStyle,
-            rangeTextStyle,
-            selectionColor,
-            startRangeSelectionColor,
-            endRangeSelectionColor,
-            rangeSelectionColor,
-            datePickerTheme,
-            isRtl,
-            todayHighlightColor,
-            minDate,
-            maxDate,
-            enablePastDates,
-            showLeadingAndTailingDates,
-            blackoutDates,
-            specialDates,
-            weekendDays,
-            selectionShape,
-            selectionRadius,
-            mouseHoverPosition,
-            enableMultiView,
-            multiViewSpacing,
-            selectionNotifier,
-            textScaleFactor,
-            height,
-            width,
-            isHijri,
-            navigationDirection,
-            localizations,
-            isMobilePlatform,
-            weekNumberStyle,
-            weekNumberPanelWidth,
-            disableDatesCollection);
+      visibleDates,
+      rowCount,
+      cellStyle,
+      selectionTextStyle,
+      rangeTextStyle,
+      selectionColor,
+      startRangeSelectionColor,
+      endRangeSelectionColor,
+      rangeSelectionColor,
+      datePickerTheme,
+      isRtl,
+      todayHighlightColor,
+      minDate,
+      maxDate,
+      enablePastDates,
+      showLeadingAndTailingDates,
+      blackoutDates,
+      specialDates,
+      weekendDays,
+      selectionShape,
+      selectionRadius,
+      mouseHoverPosition,
+      enableMultiView,
+      multiViewSpacing,
+      selectionNotifier,
+      textScaleFactor,
+      height,
+      width,
+      isHijri,
+      navigationDirection,
+      localizations,
+      isMobilePlatform,
+      weekNumberStyle,
+      weekNumberPanelWidth,
+      disableDatesCollection);
 
   dynamic _selectedRange;
 
@@ -2992,7 +2992,7 @@ class _MonthViewRangeSelectionRenderObject extends _IMonthView {
     final bool isBetweenRange = selectionDetails[3];
 
     final double radius =
-        _getCellRadius(selectionRadius, _centerXPosition, _centerYPosition);
+    _getCellRadius(selectionRadius, _centerXPosition, _centerYPosition);
     final double heightDifference = _cellHeight / 2 - radius;
     if (isSelectedDate) {
       _drawSelectedDate(canvas, radius, _centerXPosition, _cellWidth,
@@ -3206,41 +3206,41 @@ class _MonthViewExtendableRangeSelectionRenderObject extends _IMonthView {
       List<dynamic>? disableDatesCollection,
       this._extendableRangeSelectionDirection)
       : super(
-            visibleDates,
-            rowCount,
-            cellStyle,
-            selectionTextStyle,
-            rangeTextStyle,
-            selectionColor,
-            startRangeSelectionColor,
-            endRangeSelectionColor,
-            rangeSelectionColor,
-            datePickerTheme,
-            isRtl,
-            todayHighlightColor,
-            minDate,
-            maxDate,
-            enablePastDates,
-            showLeadingAndTailingDates,
-            blackoutDates,
-            specialDates,
-            weekendDays,
-            selectionShape,
-            selectionRadius,
-            mouseHoverPosition,
-            enableMultiView,
-            multiViewSpacing,
-            selectionNotifier,
-            textScaleFactor,
-            height,
-            width,
-            isHijri,
-            navigationDirection,
-            localizations,
-            isMobilePlatform,
-            weekNumberStyle,
-            weekNumberPanelWidth,
-            disableDatesCollection);
+      visibleDates,
+      rowCount,
+      cellStyle,
+      selectionTextStyle,
+      rangeTextStyle,
+      selectionColor,
+      startRangeSelectionColor,
+      endRangeSelectionColor,
+      rangeSelectionColor,
+      datePickerTheme,
+      isRtl,
+      todayHighlightColor,
+      minDate,
+      maxDate,
+      enablePastDates,
+      showLeadingAndTailingDates,
+      blackoutDates,
+      specialDates,
+      weekendDays,
+      selectionShape,
+      selectionRadius,
+      mouseHoverPosition,
+      enableMultiView,
+      multiViewSpacing,
+      selectionNotifier,
+      textScaleFactor,
+      height,
+      width,
+      isHijri,
+      navigationDirection,
+      localizations,
+      isMobilePlatform,
+      weekNumberStyle,
+      weekNumberPanelWidth,
+      disableDatesCollection);
 
   dynamic _selectedRange;
 
@@ -3284,14 +3284,14 @@ class _MonthViewExtendableRangeSelectionRenderObject extends _IMonthView {
   TextStyle drawSelection(Canvas canvas, double x, double y, int index,
       TextStyle selectionTextStyle, TextStyle selectionRangeTextStyle) {
     final List<bool> selectionDetails =
-        _getSelectedRangePosition(index, _selectedIndex);
+    _getSelectedRangePosition(index, _selectedIndex);
     final bool isSelectedDate = selectionDetails[0];
     final bool isStartRange = selectionDetails[1];
     final bool isEndRange = selectionDetails[2];
     final bool isBetweenRange = selectionDetails[3];
 
     final double radius =
-        _getCellRadius(selectionRadius, _centerXPosition, _centerYPosition);
+    _getCellRadius(selectionRadius, _centerXPosition, _centerYPosition);
     final double heightDifference = _cellHeight / 2 - radius;
     if (isSelectedDate) {
       _drawSelectedDate(canvas, radius, _centerXPosition, _cellWidth,
@@ -3342,7 +3342,7 @@ class _MonthViewExtendableRangeSelectionRenderObject extends _IMonthView {
     _selectionPainter.style = PaintingStyle.fill;
     _selectionPainter.isAntiAlias = true;
     final List<bool> selectionDetails =
-        _getSelectedRangePosition(index, _selectedIndex);
+    _getSelectedRangePosition(index, _selectedIndex);
     final bool isSelectedDate = selectionDetails[0];
     final bool isStartRange = selectionDetails[1];
     final bool isEndRange = selectionDetails[2];
@@ -3462,7 +3462,7 @@ class _MonthViewExtendableRangeSelectionRenderObject extends _IMonthView {
     /// range as a list, in this list the isBetweenRange boolean index is 3,
     /// hence we used 3 here.
     final List<bool> selectionDetails =
-        _getSelectedRangePosition(index, _selectedIndex);
+    _getSelectedRangePosition(index, _selectedIndex);
     return selectionDetails[3];
   }
 }
@@ -3506,41 +3506,41 @@ class _MonthViewMultiRangeSelectionRenderObject extends _IMonthView {
       double weekNumberPanelWidth,
       List<dynamic>? disableDatesCollection)
       : super(
-            visibleDates,
-            rowCount,
-            cellStyle,
-            selectionTextStyle,
-            rangeTextStyle,
-            selectionColor,
-            startRangeSelectionColor,
-            endRangeSelectionColor,
-            rangeSelectionColor,
-            datePickerTheme,
-            isRtl,
-            todayHighlightColor,
-            minDate,
-            maxDate,
-            enablePastDates,
-            showLeadingAndTailingDates,
-            blackoutDates,
-            specialDates,
-            weekendDays,
-            selectionShape,
-            selectionRadius,
-            mouseHoverPosition,
-            enableMultiView,
-            multiViewSpacing,
-            selectionNotifier,
-            textScaleFactor,
-            height,
-            width,
-            isHijri,
-            navigationDirection,
-            localizations,
-            isMobilePlatform,
-            weekNumberStyle,
-            weekNumberPanelWidth,
-            disableDatesCollection);
+      visibleDates,
+      rowCount,
+      cellStyle,
+      selectionTextStyle,
+      rangeTextStyle,
+      selectionColor,
+      startRangeSelectionColor,
+      endRangeSelectionColor,
+      rangeSelectionColor,
+      datePickerTheme,
+      isRtl,
+      todayHighlightColor,
+      minDate,
+      maxDate,
+      enablePastDates,
+      showLeadingAndTailingDates,
+      blackoutDates,
+      specialDates,
+      weekendDays,
+      selectionShape,
+      selectionRadius,
+      mouseHoverPosition,
+      enableMultiView,
+      multiViewSpacing,
+      selectionNotifier,
+      textScaleFactor,
+      height,
+      width,
+      isHijri,
+      navigationDirection,
+      localizations,
+      isMobilePlatform,
+      weekNumberStyle,
+      weekNumberPanelWidth,
+      disableDatesCollection);
 
   List<dynamic>? _selectedRanges;
 
@@ -3571,7 +3571,7 @@ class _MonthViewMultiRangeSelectionRenderObject extends _IMonthView {
     final bool isBetweenRange = selectionDetails[3];
 
     final double radius =
-        _getCellRadius(selectionRadius, _centerXPosition, _centerYPosition);
+    _getCellRadius(selectionRadius, _centerXPosition, _centerYPosition);
     final double heightDifference = _cellHeight / 2 - radius;
     if (isSelectedDate) {
       _drawSelectedDate(canvas, radius, _centerXPosition, _cellWidth,
@@ -3895,7 +3895,7 @@ List<int> _getSelectedRangeIndex(dynamic startDate, dynamic endDate,
   }
 
   final dynamic viewStartDate =
-      monthStartIndex != -1 ? visibleDates[monthStartIndex] : visibleDates[0];
+  monthStartIndex != -1 ? visibleDates[monthStartIndex] : visibleDates[0];
   final dynamic viewEndDate = monthEndIndex != -1
       ? visibleDates[monthEndIndex]
       : visibleDates[visibleDates.length - 1];
@@ -4049,7 +4049,7 @@ void _drawMonthCellsAndSelection(PaintingContext context, Size size,
     }
     for (int j = 0; j < viewCount; j++) {
       final int currentViewIndex =
-          monthView.isRtl ? DateRangePickerHelper.getRtlIndex(viewCount, j) : j;
+      monthView.isRtl ? DateRangePickerHelper.getRtlIndex(viewCount, j) : j;
       final int currentMonth = monthView
           .visibleDates[((j * datesCount) + (datesCount / 2)).truncate()]
           .month as int;
@@ -4057,18 +4057,18 @@ void _drawMonthCellsAndSelection(PaintingContext context, Size size,
       final int viewStartIndex = j * datesCount;
       final int viewEndIndex = ((j + 1) * datesCount) - 1;
       final List<int> selectedIndex =
-          monthView.getSelectedIndexValues(viewStartIndex, viewEndIndex);
+      monthView.getSelectedIndexValues(viewStartIndex, viewEndIndex);
       double viewStartPosition = isVerticalMultiView
           ? weekNumberPanelWidth
           : (currentViewIndex * width) +
-              (currentViewIndex * webUIPadding) +
-              (weekNumberPanelWidth * (currentViewIndex + 1));
+          (currentViewIndex * webUIPadding) +
+          (weekNumberPanelWidth * (currentViewIndex + 1));
       if (monthView.isRtl) {
         viewStartPosition = isVerticalMultiView
             ? 0
             : (currentViewIndex * width) +
-                (currentViewIndex * webUIPadding) +
-                (weekNumberPanelWidth * currentViewIndex);
+            (currentViewIndex * webUIPadding) +
+            (weekNumberPanelWidth * currentViewIndex);
       }
       final double viewEndPosition = viewStartPosition + width;
       xPosition = viewStartPosition;
@@ -4094,7 +4094,7 @@ void _drawMonthCellsAndSelection(PaintingContext context, Size size,
         if (monthView.isRtl) {
           final int rowIndex = i ~/ DateTime.daysPerWeek;
           currentIndex = DateRangePickerHelper.getRtlIndex(
-                  DateTime.daysPerWeek, i % DateTime.daysPerWeek) +
+              DateTime.daysPerWeek, i % DateTime.daysPerWeek) +
               (rowIndex * DateTime.daysPerWeek);
         }
 
@@ -4116,29 +4116,29 @@ void _drawMonthCellsAndSelection(PaintingContext context, Size size,
         if (weekNumberPanelWidth != 0 &&
             hideLeadingAndTrailingDates &&
             ((i <= DateTime.daysPerWeek &&
-                    monthView
-                            .visibleDates[viewStartIndex + DateTime.daysPerWeek]
-                            .month ==
-                        currentMonth) ||
+                monthView
+                    .visibleDates[viewStartIndex + DateTime.daysPerWeek]
+                    .month ==
+                    currentMonth) ||
                 (i > DateTime.daysPerWeek &&
                     i <= (DateTime.daysPerWeek * 2) &&
                     monthView
-                            .visibleDates[
-                                viewStartIndex + (DateTime.daysPerWeek * 2)]
-                            .month ==
+                        .visibleDates[
+                    viewStartIndex + (DateTime.daysPerWeek * 2)]
+                        .month ==
                         currentMonth) ||
                 (i >= datesCount - (DateTime.daysPerWeek * 2) &&
                     i < datesCount - DateTime.daysPerWeek &&
                     monthView
-                            .visibleDates[
-                                viewEndIndex - ((DateTime.daysPerWeek * 2) - 1)]
-                            .month ==
+                        .visibleDates[
+                    viewEndIndex - ((DateTime.daysPerWeek * 2) - 1)]
+                        .month ==
                         currentMonth) ||
                 (i >= datesCount - DateTime.daysPerWeek &&
                     (monthView
-                            .visibleDates[
-                                viewEndIndex - (DateTime.daysPerWeek - 1)]
-                            .month ==
+                        .visibleDates[
+                    viewEndIndex - (DateTime.daysPerWeek - 1)]
+                        .month ==
                         currentMonth))) &&
             date.weekday == DateTime.monday) {
           _drawWeekNumber(
@@ -4166,8 +4166,8 @@ void _drawMonthCellsAndSelection(PaintingContext context, Size size,
             monthView.isHijri);
 
         final bool isBlackedDate =
-            DateRangePickerHelper.isDateWithInVisibleDates(
-                monthView.visibleDates, monthView.blackoutDates, date);
+        DateRangePickerHelper.isDateWithInVisibleDates(
+            monthView.visibleDates, monthView.blackoutDates, date);
         final bool isSelectedDate = selectedIndex.contains(currentIndex);
         bool isDisabledDate = DateRangePickerHelper.isDateWithInVisibleDates(
             monthView.visibleDates, monthView.disableDatesCollection, date);
@@ -4259,17 +4259,17 @@ void _drawMonthCellsAndSelection(PaintingContext context, Size size,
   }
   for (int j = 0; j < viewCount; j++) {
     final int currentViewIndex =
-        monthView.isRtl ? DateRangePickerHelper.getRtlIndex(viewCount, j) : j;
+    monthView.isRtl ? DateRangePickerHelper.getRtlIndex(viewCount, j) : j;
     final dynamic currentMonthDate = monthView
         .visibleDates[((j * datesCount) + (datesCount / 2)).truncate()];
     final int nextMonth = getNextMonthDate(currentMonthDate).month as int;
     final int previousMonth =
-        getPreviousMonthDate(currentMonthDate).month as int;
+    getPreviousMonthDate(currentMonthDate).month as int;
     bool isCurrentDate;
     final TextStyle selectionTextStyle =
-        monthView.datePickerTheme.selectionTextStyle!;
+    monthView.datePickerTheme.selectionTextStyle!;
     final TextStyle selectedRangeTextStyle =
-        monthView.datePickerTheme.rangeSelectionTextStyle!;
+    monthView.datePickerTheme.rangeSelectionTextStyle!;
 
     Decoration? dateDecoration;
     const double padding = 1;
@@ -4277,18 +4277,18 @@ void _drawMonthCellsAndSelection(PaintingContext context, Size size,
     final int viewStartIndex = j * datesCount;
     final int viewEndIndex = ((j + 1) * datesCount) - 1;
     final List<int> selectedIndex =
-        monthView.getSelectedIndexValues(viewStartIndex, viewEndIndex);
+    monthView.getSelectedIndexValues(viewStartIndex, viewEndIndex);
     double viewStartPosition = isVerticalMultiView
         ? weekNumberPanelWidth
         : (currentViewIndex * width) +
-            (currentViewIndex * webUIPadding) +
-            (weekNumberPanelWidth * (currentViewIndex + 1));
+        (currentViewIndex * webUIPadding) +
+        (weekNumberPanelWidth * (currentViewIndex + 1));
     if (monthView.isRtl) {
       viewStartPosition = isVerticalMultiView
           ? 0
           : (currentViewIndex * width) +
-              (currentViewIndex * webUIPadding) +
-              (weekNumberPanelWidth * currentViewIndex);
+          (currentViewIndex * webUIPadding) +
+          (weekNumberPanelWidth * currentViewIndex);
     }
 
     List<int>? hoveringIndex;
@@ -4320,7 +4320,7 @@ void _drawMonthCellsAndSelection(PaintingContext context, Size size,
       if (monthView.isRtl) {
         final int rowIndex = i ~/ DateTime.daysPerWeek;
         currentIndex = DateRangePickerHelper.getRtlIndex(
-                DateTime.daysPerWeek, i % DateTime.daysPerWeek) +
+            DateTime.daysPerWeek, i % DateTime.daysPerWeek) +
             (rowIndex * DateTime.daysPerWeek);
       }
 
@@ -4343,28 +4343,28 @@ void _drawMonthCellsAndSelection(PaintingContext context, Size size,
       if (weekNumberPanelWidth != 0 &&
           hideLeadingAndTrailingDates &&
           ((i <= DateTime.daysPerWeek &&
-                  monthView.visibleDates[viewStartIndex + DateTime.daysPerWeek]
-                          .month ==
-                      currentMonthDate.month) ||
+              monthView.visibleDates[viewStartIndex + DateTime.daysPerWeek]
+                  .month ==
+                  currentMonthDate.month) ||
               (i > DateTime.daysPerWeek &&
                   i <= (DateTime.daysPerWeek * 2) &&
                   monthView
-                          .visibleDates[
-                              viewStartIndex + (DateTime.daysPerWeek * 2)]
-                          .month ==
+                      .visibleDates[
+                  viewStartIndex + (DateTime.daysPerWeek * 2)]
+                      .month ==
                       currentMonthDate.month) ||
               (i >= datesCount - (DateTime.daysPerWeek * 2) &&
                   i < datesCount - DateTime.daysPerWeek &&
                   monthView
-                          .visibleDates[
-                              viewEndIndex - ((DateTime.daysPerWeek * 2) - 1)]
-                          .month ==
+                      .visibleDates[
+                  viewEndIndex - ((DateTime.daysPerWeek * 2) - 1)]
+                      .month ==
                       currentMonthDate.month) ||
               (i >= datesCount - DateTime.daysPerWeek &&
                   (monthView
-                          .visibleDates[
-                              viewEndIndex - (DateTime.daysPerWeek - 1)]
-                          .month ==
+                      .visibleDates[
+                  viewEndIndex - (DateTime.daysPerWeek - 1)]
+                      .month ==
                       currentMonthDate.month))) &&
           date.weekday == DateTime.monday) {
         _drawWeekNumber(
@@ -4426,7 +4426,7 @@ void _drawMonthCellsAndSelection(PaintingContext context, Size size,
       final bool isBlackedDate = DateRangePickerHelper.isDateWithInVisibleDates(
           monthView.visibleDates, monthView.blackoutDates, date);
       final bool isWeekEnd =
-          DateRangePickerHelper.isWeekend(monthView.weekendDays, date);
+      DateRangePickerHelper.isWeekend(monthView.weekendDays, date);
       final bool isSpecialDate = DateRangePickerHelper.isDateWithInVisibleDates(
           monthView.visibleDates, monthView.specialDates, date);
       bool isDisabledDate = DateRangePickerHelper.isDateWithInVisibleDates(
@@ -4542,12 +4542,12 @@ void _drawWeekNumber(
     double viewStartPosition,
     double viewEndPosition) {
   final String weekNumber =
-      DateRangePickerHelper.getWeekNumberOfYear(date, monthView.isHijri)
-          .toString();
+  DateRangePickerHelper.getWeekNumberOfYear(date, monthView.isHijri)
+      .toString();
   final TextStyle weekNumberTextStyle =
-      monthView.datePickerTheme.weekNumberTextStyle!;
+  monthView.datePickerTheme.weekNumberTextStyle!;
   final TextSpan textSpan =
-      TextSpan(text: weekNumber, style: weekNumberTextStyle);
+  TextSpan(text: weekNumber, style: weekNumberTextStyle);
 
   monthView._textPainter.text = textSpan;
   monthView._textPainter.textAlign = TextAlign.left;
@@ -4559,10 +4559,10 @@ void _drawWeekNumber(
       (weekNumberPanelWidth - monthView._textPainter.width) / 2;
   weekNumberPosition += monthView.isRtl
       ? viewStartPosition == 0 &&
-              monthView.navigationDirection ==
-                  DateRangePickerNavigationDirection.horizontal
-          ? viewEndPosition + monthView.multiViewSpacing
-          : viewEndPosition
+      monthView.navigationDirection ==
+          DateRangePickerNavigationDirection.horizontal
+      ? viewEndPosition + monthView.multiViewSpacing
+      : viewEndPosition
       : viewStartPosition - weekNumberPanelWidth;
   monthView._textPainter.paint(
       canvas,
@@ -4590,7 +4590,7 @@ void _drawWeekNumberPanel(Canvas canvas, Size size, double weekNumberPanelWidth,
   linePainter.color = monthView.weekNumberStyle.backgroundColor ??
       monthView.datePickerTheme.weekNumberBackgroundColor!;
   final RRect roundedRect =
-      RRect.fromRectAndRadius(rect, Radius.circular(padding));
+  RRect.fromRectAndRadius(rect, Radius.circular(padding));
   canvas.drawRRect(roundedRect, linePainter);
 }
 
@@ -4617,7 +4617,7 @@ void _addRangeHoverEffect(Canvas canvas, double xPosition, double yPosition,
       rangeSelectionMonthView._centerXPosition,
       rangeSelectionMonthView._centerYPosition);
   final double cornerRadius =
-      monthView._cellHeight / 4 > 10 ? 10 : monthView._cellHeight / 4;
+  monthView._cellHeight / 4 > 10 ? 10 : monthView._cellHeight / 4;
   double heightDifference = rangeSelectionMonthView._cellHeight / 2 - radius;
   switch (rangeSelectionMonthView.selectionShape) {
     case DateRangePickerSelectionShape.rectangle:
@@ -4751,7 +4751,7 @@ void _drawDecoration(
     Decoration dateDecoration,
     _IMonthView monthView) {
   final BoxPainter boxPainter =
-      dateDecoration.createBoxPainter(monthView.markNeedsPaint);
+  dateDecoration.createBoxPainter(monthView.markNeedsPaint);
   boxPainter.paint(
       canvas,
       Offset(xPosition + padding, yPosition + padding),
@@ -4806,7 +4806,7 @@ TextStyle _updateTextStyle(
     bool isSpecialDate,
     bool isDisabledDate) {
   final TextStyle currentDatesTextStyle =
-      monthView.datePickerTheme.activeDatesTextStyle!;
+  monthView.datePickerTheme.activeDatesTextStyle!;
   if (isBlackedDate) {
     return monthView.datePickerTheme.blackoutDatesTextStyle ??
         currentDatesTextStyle.copyWith(decoration: TextDecoration.lineThrough);
@@ -4853,7 +4853,7 @@ Decoration? _updateDecoration(
     bool isSpecialDate,
     bool isDisabledDate) {
   final Decoration? dateDecoration =
-      monthView.cellStyle.cellDecoration as Decoration?;
+  monthView.cellStyle.cellDecoration as Decoration?;
 
   if (isBlackedDate && monthView.cellStyle.blackoutDatesDecoration != null) {
     return monthView.cellStyle.blackoutDatesDecoration as Decoration;

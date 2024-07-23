@@ -54,8 +54,8 @@ class DateRangePickerHelper {
     }
 
     if ((rangeCollection1 == null &&
-            rangeCollection2 != null &&
-            rangeCollection2.isEmpty) ||
+        rangeCollection2 != null &&
+        rangeCollection2.isEmpty) ||
         (rangeCollection2 == null &&
             rangeCollection1 != null &&
             rangeCollection1.isEmpty)) {
@@ -185,8 +185,8 @@ class DateRangePickerHelper {
     }
 
     if ((datesCollection1 == null &&
-            datesCollection2 != null &&
-            datesCollection2.isEmpty) ||
+        datesCollection2 != null &&
+        datesCollection2.isEmpty) ||
         (datesCollection2 == null &&
             datesCollection1 != null &&
             datesCollection1.isEmpty)) {
@@ -268,8 +268,8 @@ class DateRangePickerHelper {
             (!isInBetweenEnabled ||
                 (isInBetweenEnabled &&
                     ((startDate.isAfter(currentDateValue) == true &&
-                            !isSameCellDates(
-                                startDate, currentDateValue, view)) ||
+                        !isSameCellDates(
+                            startDate, currentDateValue, view)) ||
                         (endDate.isBefore(currentDateValue) == true &&
                             !isSameCellDates(
                                 endDate, currentDateValue, view)))));
@@ -409,7 +409,7 @@ class DateRangePickerHelper {
         {
           if (numberOfWeeksInView != 6 && !isHijri) {
             DateTime prevViewDate =
-                DateRangePickerHelper.getDateTimeValue(visibleDates[0]);
+            DateRangePickerHelper.getDateTimeValue(visibleDates[0]);
             prevViewDate = DateRangePickerHelper.getDateTimeValue(
                 addDays(prevViewDate, -1));
             if (!isSameOrAfterDate(minDate, prevViewDate)) {
@@ -417,10 +417,10 @@ class DateRangePickerHelper {
             }
           } else {
             final dynamic currentDate =
-                visibleDates[visibleDates.length ~/ (enableMultiView ? 4 : 2)];
+            visibleDates[visibleDates.length ~/ (enableMultiView ? 4 : 2)];
             final dynamic previousDate = getPreviousMonthDate(currentDate);
             if ((previousDate.month < minDate.month == true &&
-                    previousDate.year == minDate.year) ||
+                previousDate.year == minDate.year) ||
                 previousDate.year < minDate.year == true) {
               return false;
             }
@@ -432,8 +432,8 @@ class DateRangePickerHelper {
       case DateRangePickerView.century:
         {
           final int currentYear =
-              visibleDates[visibleDates.length ~/ (enableMultiView ? 4 : 2)]
-                  .year as int;
+          visibleDates[visibleDates.length ~/ (enableMultiView ? 4 : 2)]
+              .year as int;
           final int minYear = minDate.year as int;
 
           final int offset = getOffset(view);
@@ -533,10 +533,10 @@ class DateRangePickerHelper {
             }
           } else {
             final dynamic currentDate =
-                visibleDates[visibleDates.length ~/ (enableMultiView ? 4 : 2)];
+            visibleDates[visibleDates.length ~/ (enableMultiView ? 4 : 2)];
             final dynamic nextDate = getNextMonthDate(currentDate);
             if ((nextDate.month > maxDate.month == true &&
-                    nextDate.year == maxDate.year) ||
+                nextDate.year == maxDate.year) ||
                 nextDate.year > maxDate.year == true) {
               return false;
             }
@@ -548,8 +548,8 @@ class DateRangePickerHelper {
       case DateRangePickerView.century:
         {
           final int currentYear =
-              visibleDates[visibleDates.length ~/ (enableMultiView ? 4 : 2)]
-                  .year as int;
+          visibleDates[visibleDates.length ~/ (enableMultiView ? 4 : 2)]
+              .year as int;
           final int maxYear = maxDate.year as int;
           final int offset = getOffset(view);
           if (((currentYear ~/ offset) * offset) + offset >
@@ -830,14 +830,14 @@ class DateRangePickerHelper {
     final dynamic today = getToday(isHijri);
     if (pickerView == DateRangePickerView.year) {
       return ((date.month >= minDate.month == true &&
-                  date.year == minDate.year) ||
-              date.year > minDate.year == true) &&
+          date.year == minDate.year) ||
+          date.year > minDate.year == true) &&
           ((date.month <= maxDate.month == true && date.year == maxDate.year) ||
               date.year < maxDate.year == true) &&
           (enablePastDates ||
               (!enablePastDates &&
                   ((date.month >= today.month == true &&
-                          date.year == today.year) ||
+                      date.year == today.year) ||
                       date.year > today.year == true)));
     } else if (pickerView == DateRangePickerView.decade) {
       return date.year >= minDate.year == true &&
@@ -867,14 +867,14 @@ class DateRangePickerHelper {
 
     if (pickerView == DateRangePickerView.year) {
       final dynamic currentDate =
-          getDate(date.year, date.month + 1, 1, isHijri);
+      getDate(date.year, date.month + 1, 1, isHijri);
       return addDays(currentDate, -1);
     } else if (pickerView == DateRangePickerView.decade) {
       final dynamic currentDate = getDate(date.year + 1, 1, 1, isHijri);
       return addDays(currentDate, -1);
     } else if (pickerView == DateRangePickerView.century) {
       final dynamic currentDate =
-          getDate(((date.year ~/ 10) * 10) + 10, 1, 1, isHijri);
+      getDate(((date.year ~/ 10) * 10) + 10, 1, 1, isHijri);
       return addDays(currentDate, -1);
     }
 
@@ -964,8 +964,8 @@ class DateRangePickerHelper {
     final Rect sourceRect = sourcePath.getBounds();
     final double restrictXPosition = isRectSelection
         ? isStartRange
-            ? sourceRect.right
-            : sourceRect.left
+        ? sourceRect.right
+        : sourceRect.left
         : -1;
     for (int i = 0; i < sourceMetrics.length; i++) {
       final PathMetric metric = sourceMetrics[i];
@@ -976,7 +976,7 @@ class DateRangePickerHelper {
         final double length = array[j];
         if (canDrawPath) {
           final Path extractedPath =
-              metric.extractPath(distance, distance + length);
+          metric.extractPath(distance, distance + length);
           final Rect extractedRect = extractedPath.getBounds();
           if ((isStartRange && extractedRect.right != restrictXPosition) ||
               (isEndRange && extractedRect.left != restrictXPosition)) {

@@ -560,20 +560,20 @@ class DateRangePickerMonthViewSettings with Diagnosticable {
   /// The properties allows to customize the month view of [SfDateRangePicker].
   const DateRangePickerMonthViewSettings(
       {this.numberOfWeeksInView = 6,
-      this.firstDayOfWeek = 7,
-      this.dayFormat = 'EE',
-      this.viewHeaderHeight = 30,
-      @Deprecated('Use selectionRadius property in SfDateRangePicker')
-      // ignore: deprecated_member_use, deprecated_member_use_from_same_package
-      this.selectionRadius = -1,
-      this.showTrailingAndLeadingDates = false,
-      this.viewHeaderStyle = const DateRangePickerViewHeaderStyle(),
-      this.enableSwipeSelection = true,
-      this.blackoutDates,
-      this.specialDates,
-      this.weekendDays = const <int>[6, 7],
-      this.showWeekNumber = false,
-      this.weekNumberStyle = const DateRangePickerWeekNumberStyle()})
+        this.firstDayOfWeek = 7,
+        this.dayFormat = 'EE',
+        this.viewHeaderHeight = 30,
+        @Deprecated('Use selectionRadius property in SfDateRangePicker')
+        // ignore: deprecated_member_use, deprecated_member_use_from_same_package
+        this.selectionRadius = -1,
+        this.showTrailingAndLeadingDates = false,
+        this.viewHeaderStyle = const DateRangePickerViewHeaderStyle(),
+        this.enableSwipeSelection = true,
+        this.blackoutDates,
+        this.specialDates,
+        this.weekendDays = const <int>[6, 7],
+        this.showWeekNumber = false,
+        this.weekNumberStyle = const DateRangePickerWeekNumberStyle()})
       : assert(numberOfWeeksInView >= 1 && numberOfWeeksInView <= 6),
         assert(firstDayOfWeek >= 1 && firstDayOfWeek <= 7),
         assert(viewHeaderHeight >= -1);
@@ -1216,13 +1216,13 @@ class DateRangePickerYearCellStyle with Diagnosticable {
   /// [SfDateRangePicker].
   const DateRangePickerYearCellStyle(
       {this.textStyle,
-      this.todayTextStyle,
-      this.leadingDatesTextStyle,
-      this.disabledDatesTextStyle,
-      this.cellDecoration,
-      this.todayCellDecoration,
-      this.disabledDatesDecoration,
-      this.leadingDatesDecoration});
+        this.todayTextStyle,
+        this.leadingDatesTextStyle,
+        this.disabledDatesTextStyle,
+        this.cellDecoration,
+        this.todayCellDecoration,
+        this.disabledDatesDecoration,
+        this.leadingDatesDecoration});
 
   /// The text style for the text in the [SfDateRangePicker] year, decade and
   /// century view cells.
@@ -1771,37 +1771,37 @@ class DateRangePickerMonthCellStyle with Diagnosticable {
       {@Deprecated('Use selectionColor property in SfDateRangePicker')
       // ignore: deprecated_member_use, deprecated_member_use_from_same_package
       this.selectionColor,
-      @Deprecated('Use startRangeSelectionColor property in SfDateRangePicker')
-      // ignore: deprecated_member_use, deprecated_member_use_from_same_package
-      this.startRangeSelectionColor,
-      @Deprecated('Use endRangeSelectionColor property in SfDateRangePicker')
-      // ignore: deprecated_member_use, deprecated_member_use_from_same_package
-      this.endRangeSelectionColor,
-      @Deprecated('Use rangeSelectionColor property in SfDateRangePicker')
-      // ignore: deprecated_member_use, deprecated_member_use_from_same_package
-      this.rangeSelectionColor,
-      this.textStyle,
-      this.todayTextStyle,
-      this.trailingDatesTextStyle,
-      this.leadingDatesTextStyle,
-      @Deprecated('Use selectionTextStyle property in SfDateRangePicker')
-      // ignore: deprecated_member_use, deprecated_member_use_from_same_package
-      this.selectionTextStyle,
-      this.disabledDatesTextStyle,
-      this.blackoutDateTextStyle,
-      this.weekendTextStyle,
-      this.specialDatesTextStyle,
-      this.specialDatesDecoration,
-      this.blackoutDatesDecoration,
-      this.cellDecoration,
-      this.todayCellDecoration,
-      this.disabledDatesDecoration,
-      this.trailingDatesDecoration,
-      this.leadingDatesDecoration,
-      @Deprecated('Use rangeTextStyle property in SfDateRangePicker')
-      // ignore: deprecated_member_use, deprecated_member_use_from_same_package
-      this.rangeTextStyle,
-      this.weekendDatesDecoration});
+        @Deprecated('Use startRangeSelectionColor property in SfDateRangePicker')
+        // ignore: deprecated_member_use, deprecated_member_use_from_same_package
+        this.startRangeSelectionColor,
+        @Deprecated('Use endRangeSelectionColor property in SfDateRangePicker')
+        // ignore: deprecated_member_use, deprecated_member_use_from_same_package
+        this.endRangeSelectionColor,
+        @Deprecated('Use rangeSelectionColor property in SfDateRangePicker')
+        // ignore: deprecated_member_use, deprecated_member_use_from_same_package
+        this.rangeSelectionColor,
+        this.textStyle,
+        this.todayTextStyle,
+        this.trailingDatesTextStyle,
+        this.leadingDatesTextStyle,
+        @Deprecated('Use selectionTextStyle property in SfDateRangePicker')
+        // ignore: deprecated_member_use, deprecated_member_use_from_same_package
+        this.selectionTextStyle,
+        this.disabledDatesTextStyle,
+        this.blackoutDateTextStyle,
+        this.weekendTextStyle,
+        this.specialDatesTextStyle,
+        this.specialDatesDecoration,
+        this.blackoutDatesDecoration,
+        this.cellDecoration,
+        this.todayCellDecoration,
+        this.disabledDatesDecoration,
+        this.trailingDatesDecoration,
+        this.leadingDatesDecoration,
+        @Deprecated('Use rangeTextStyle property in SfDateRangePicker')
+        // ignore: deprecated_member_use, deprecated_member_use_from_same_package
+        this.rangeTextStyle,
+        this.weekendDatesDecoration});
 
   /// The text style for the text in the [SfDateRangePicker] month cells.
   ///
@@ -4252,7 +4252,7 @@ class IterableDiagnostics<T> extends DiagnosticableTree {
     return collection == null
         ? 'null'
         : collection!.isNotEmpty
-            ? '<$T>'
-            : '<none>';
+        ? '<$T>'
+        : '<none>';
   }
 }

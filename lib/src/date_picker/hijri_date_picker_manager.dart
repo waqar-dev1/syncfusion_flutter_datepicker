@@ -81,15 +81,15 @@ class HijriDatePickerMonthViewSettings with Diagnosticable {
   /// [SfHijriDateRangePicker].
   const HijriDatePickerMonthViewSettings(
       {this.firstDayOfWeek = 7,
-      this.dayFormat = 'EE',
-      this.viewHeaderHeight = 30,
-      this.viewHeaderStyle = const DateRangePickerViewHeaderStyle(),
-      this.enableSwipeSelection = true,
-      this.blackoutDates,
-      this.specialDates,
-      this.showWeekNumber = false,
-      this.weekNumberStyle = const DateRangePickerWeekNumberStyle(),
-      this.weekendDays = const <int>[6, 7]})
+        this.dayFormat = 'EE',
+        this.viewHeaderHeight = 30,
+        this.viewHeaderStyle = const DateRangePickerViewHeaderStyle(),
+        this.enableSwipeSelection = true,
+        this.blackoutDates,
+        this.specialDates,
+        this.showWeekNumber = false,
+        this.weekNumberStyle = const DateRangePickerWeekNumberStyle(),
+        this.weekendDays = const <int>[6, 7]})
       : assert(firstDayOfWeek >= 1 && firstDayOfWeek <= 7),
         assert(viewHeaderHeight >= -1);
 
@@ -598,11 +598,11 @@ class HijriDatePickerYearCellStyle with Diagnosticable {
   /// [SfHijriDateRangePicker].
   const HijriDatePickerYearCellStyle(
       {this.textStyle,
-      this.todayTextStyle,
-      this.disabledDatesTextStyle,
-      this.cellDecoration,
-      this.todayCellDecoration,
-      this.disabledDatesDecoration});
+        this.todayTextStyle,
+        this.disabledDatesTextStyle,
+        this.cellDecoration,
+        this.todayCellDecoration,
+        this.disabledDatesDecoration});
 
   /// The text style for the text in the [SfHijriDateRangePicker] year and
   /// decade view cells.
@@ -1014,17 +1014,17 @@ class HijriDatePickerMonthCellStyle with Diagnosticable {
   /// [SfHijriDateRangePicker].
   const HijriDatePickerMonthCellStyle(
       {this.textStyle,
-      this.todayTextStyle,
-      this.disabledDatesTextStyle,
-      this.blackoutDateTextStyle,
-      this.weekendTextStyle,
-      this.specialDatesTextStyle,
-      this.specialDatesDecoration,
-      this.blackoutDatesDecoration,
-      this.cellDecoration,
-      this.todayCellDecoration,
-      this.disabledDatesDecoration,
-      this.weekendDatesDecoration});
+        this.todayTextStyle,
+        this.disabledDatesTextStyle,
+        this.blackoutDateTextStyle,
+        this.weekendTextStyle,
+        this.specialDatesTextStyle,
+        this.specialDatesDecoration,
+        this.blackoutDatesDecoration,
+        this.cellDecoration,
+        this.todayCellDecoration,
+        this.disabledDatesDecoration,
+        this.weekendDatesDecoration});
 
   /// The text style for the text in the [SfHijriDateRangePicker] month cells.
   ///
